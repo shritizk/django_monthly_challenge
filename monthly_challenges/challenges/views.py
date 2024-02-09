@@ -16,6 +16,17 @@ list1={"january":"Join gym",
       "november":"get a new car",
       "december":"go on holiday"}
 
+def index(request):
+ list_item=""
+ months=list(list1.keys())
+ for month in months:
+  url=reverse("monthly_challenges",args=[month])
+  list_item+=f"<li><a href=\"{url}\">{month}</a></li>" 
+ respose=f"<ul>{list_item}</ul>"
+ return HttpResponse(respose)
+ 
+ 
+
 def monthly_challenges_withnumber(request,month):
   months=list(list1.keys())
 
